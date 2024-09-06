@@ -1212,7 +1212,7 @@ transition: all 0.3s;
 }
 
 .order-placed-container {
-  height: 50vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
