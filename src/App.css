@@ -1137,6 +1137,7 @@ transition: all 0.3s;
     display: block;
     align-content: center;
     text-align: center;
+    cursor: pointer;
   }
   .contact-left{
     width: 90%;

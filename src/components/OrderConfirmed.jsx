@@ -12,7 +12,7 @@ function OrderConfirmed() {
     let date = Date();
 
     const { state } = useLocation();
-    const { subtotal, total, orderNumber, paymentMethod, addressDetails } = state;
+    const{ subtotal, total, orderNumber, paymentMethod, addressDetails } = state;
 
     useEffect(() => {
         setTimeout(() => {

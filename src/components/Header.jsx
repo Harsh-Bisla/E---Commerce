@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux'
 import { PiHandbagLight } from "react-icons/pi";
 import { CiMenuFries } from "react-icons/ci";
 import { IoSearchOutline } from "react-icons/io5";
+import { IoMicOutline } from "react-icons/io5";
 
-function Header({ handleMenuOpen, closeMenu, menu, searchVal, handleSearchChange, handleNavClick }) {
+function Header({ handleMenuOpen, closeMenu, menu, searchVal, handleSearchChange, handleNavClick , handleVoiceSearch}) {
 
 
   const cartCount = useSelector(store => store.Cart)
@@ -20,8 +21,6 @@ function Header({ handleMenuOpen, closeMenu, menu, searchVal, handleSearchChange
       setHideBar("close")
     }
   }
-
-
 
   return (
     <header className='header'>
@@ -41,6 +40,7 @@ function Header({ handleMenuOpen, closeMenu, menu, searchVal, handleSearchChange
         <div className='input' style={{ display: hideBar === "close" ? "none" : "flex" }}>
           <input type='text' value={searchVal} onChange={handleSearchChange} placeholder='search products' />
         </div>
+        <IoMicOutline onClick={handleVoiceSearch} fontSize={22} style={{cursor:"pointer"}} />
         <IoSearchOutline onClick={openSearchBar} className='search-box' fontSize="22px" />
         <div className='cart-icon'>
           <Link to="/cart"><PiHandbagLight fontSize="25px" /></Link>

@@ -12,8 +12,7 @@ function App() {
   const [menu, setMenu] = useState('close');
   const [searchVal, setSearchVal] = useState("");
 
-
-
+// menu function
   const handleMenuOpen = () => {
     setMenu(menu === 'close' ? 'open' : 'close');
   };
@@ -25,10 +24,34 @@ function App() {
     setMenu("close")
   }
 
+  // for voice search
+  const startVoiceSearch = () => {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.onresult = (event) => {
+      let result = event.results[0][0].transcript;
+      result=result.replace("."," ")
+      alert(`Showing Results for ${result}`,"dark")
+      setSearchVal(result);
+    };
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error', event.error);
+    };
+    recognition.start();
+  };
+
   const handleSearchChange = (e) => {
     setSearchVal(e.target.value)
   }
 
+
+  // search function
+  const handleVoiceSearch=()=>{
+    startVoiceSearch();
+    alert("Start Speaking...",)
+  }
+
+  // Alert Funnction
   const alert = (message, theme) => {
     toast.success(message, {
       theme:theme,
@@ -39,7 +62,7 @@ function App() {
 
   return (
     <>
-      <Header handleMenuOpen={handleMenuOpen} closeMenu={closeMenu} menu={menu} searchVal={searchVal} handleSearchChange={handleSearchChange} handleNavClick={handleNavClick} />
+      <Header handleMenuOpen={handleMenuOpen} closeMenu={closeMenu} menu={menu} searchVal={searchVal} handleSearchChange={handleSearchChange} handleNavClick={handleNavClick} handleVoiceSearch={handleVoiceSearch} />
       <ToastContainer className="custom-alert" autoClose={2000}/>
       <Outlet context={{searchVal, alert}}/>
       <Footer />

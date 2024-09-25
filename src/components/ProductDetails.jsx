@@ -8,8 +8,7 @@ import { cartSliceActions } from '../store/CartSlice'
 function ProductDetails() {
     const dispatch = useDispatch()
 
-    const { alert } = useOutletContext()
-
+    const { alert } = useOutletContext();
 
     const Products = useSelector(store => store.ProductDetails)
     let relatedProducts;
